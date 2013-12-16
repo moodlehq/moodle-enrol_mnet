@@ -15,15 +15,22 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * MNet enrolment plugin version specification.
+ * Capabilities for mnet enrolment plugin.
  *
  * @package    enrol_mnet
- * @copyright  2010 David Mudrak <david@moodle.com>
+ * @copyright  2014 Daniel Neis Araujo
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2014051201;        // The current plugin version (Date: YYYYMMDDXX)
-$plugin->requires  = 2014050800;        // Requires this Moodle version
-$plugin->component = 'enrol_mnet';      // Full name of the plugin (used for diagnostics)
+$capabilities = array(
+    'enrol/mnet:config' => array(
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'archetypes' => array(
+            'manager' => CAP_ALLOW,
+            'editingteacher' => CAP_ALLOW,
+        )
+    ),
+);
